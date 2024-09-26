@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clause Lookup</title>
+</head>
+<body>
+    <h1>Clause Lookup</h1>
+
+    <!-- Form where the user can select a column and type in their project cost -->
+    <form action="/get_clauses" method="POST">
+        <label for="column">Select a Procurement Type (Column):</label>
+        <select name="column" id="column">
+            {% for procurement_type in procurement_types %}
+                <option value="{{ procurement_type }}">{{ procurement_type }}</option>
+            {% endfor %}
+        </select>
+        <br><br>
+
+        <label for="cost">Enter Project Cost:</label>
+        <input type="number" name="cost" id="cost" placeholder="Enter the project cost" required>
+        <br><br>
+
+        <!-- Submit button -->
+        <button type="submit">Get Clause IDs</button>
+    </form>
+
+    <!-- Display the clause IDs returned by the backend -->
+    {% if ids %}
+        <h3>Clause IDs for your selection:</h3>
+        <ul>
+        {% for id in ids %}
+            <li>{{ id }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>
