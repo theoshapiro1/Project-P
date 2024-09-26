@@ -1,94 +1,12 @@
-annotated-types==0.6.0
-anyio==4.2.0
-awsebcli==3.21.0
-beautifulsoup4==4.12.3
-blessed==1.20.0
-botocore==1.35.24
-brotlipy==0.7.0
-cement==2.10.14
-certifi==2024.8.30
-cffi @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/croot-2p6q7e2r/cffi_1642701115063/work
-charset-normalizer @ file:///tmp/build/80754af9/charset-normalizer_1630003229654/work
-click @ file:///opt/concourse/worker/volumes/live/17ca243b-fc66-462b-4bc1-f11ad524e336/volume/click_1646056621177/work
-colorama==0.4.6
-conda==22.9.0
-conda-content-trust @ file:///tmp/build/80754af9/conda-content-trust_1617045594566/work
-conda-package-handling @ file:///opt/concourse/worker/volumes/live/0cf65687-72c2-4e51-5322-1b3a8c3aa6f5/volume/conda-package-handling_1649105815927/work
-contourpy==1.2.1
-cryptography @ file:///opt/concourse/worker/volumes/live/a9ca20dd-e1fe-4ed3-754e-0db64082a5d2/volume/cryptography_1639414576087/work
-cycler==0.12.1
-distro==1.9.0
 document==1.0
 docx==0.2.4
-et-xmlfile==1.1.0
-exceptiongroup==1.2.0
 Flask @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_8am4k38yjk/croots/recipe/flask_1658870771936/work
-fonttools==4.53.1
-frozendict==2.4.4
 gunicorn==23.0.0
-h11==0.14.0
-html5lib==1.1
-httpcore==1.0.2
-httpx==0.26.0
-idna @ file:///tmp/build/80754af9/idna_1637925883363/work
-importlib-metadata @ file:///opt/concourse/worker/volumes/live/04344671-a59e-4800-6391-124f9c0e5484/volume/importlib-metadata_1648562417587/work
-importlib_resources==6.4.0
 itsdangerous @ file:///tmp/build/80754af9/itsdangerous_1621432558163/work
 Jinja2 @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_6adj7x0ejx/croot/jinja2_1666908137966/work
-jmespath==1.0.1
-joblib==1.4.2
-kiwisolver==1.4.5
-lxml==5.3.0
 MarkupSafe @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_d4a9444f-bd4c-4043-b47d-cede33979b0fve7bm42r/croots/recipe/markupsafe_1654597878200/work
-matplotlib==3.9.0
-mkl-fft==1.3.1
-mkl-random @ file:///opt/concourse/worker/volumes/live/0cda23d8-7460-44b2-7e5d-3c76a8a0ca7e/volume/mkl_random_1626186083266/work
-mkl-service==2.4.0
-mplfinance==0.12.10b0
-multitasking==0.0.11
-mysql-connector-python==8.3.0
-numexpr @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_f4cadb13-5662-4009-98e5-0105539d6a65fifix2d5/croots/recipe/numexpr_1656940304949/work
 numpy @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_f1fp12zi4u/croot/numpy_and_numpy_base_1667233468135/work
-openai==1.8.0
 openpyxl==3.1.2
-packaging @ file:///tmp/build/80754af9/packaging_1637314298585/work
 pandas==2.1.4
-pathspec==0.10.1
-peewee==3.17.6
-php==1.2.1
-pillow==10.4.0
-platformdirs==4.2.2
-pyarrow==17.0.0
-pycosat==0.6.3
-pycparser @ file:///tmp/build/80754af9/pycparser_1636541352034/work
-pydantic==2.5.3
-pydantic_core==2.14.6
-pyOpenSSL @ file:///opt/conda/conda-bld/pyopenssl_1643788558760/work
-pyparsing @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_3a17y2delq/croots/recipe/pyparsing_1661452538853/work
-PySocks @ file:///opt/concourse/worker/volumes/live/112288ac-9cb0-4e73-768b-13baf4ca6419/volume/pysocks_1605305820043/work
-python-dateutil @ file:///tmp/build/80754af9/python-dateutil_1626374649649/work
-python-docx==1.1.2
-pytz==2024.1
-PyYAML==6.0.2
-requests==2.32.3
-ruamel-yaml-conda @ file:///opt/concourse/worker/volumes/live/e81cf0fe-611a-498e-6e69-a7320057c1ac/volume/ruamel_yaml_1616016689696/work
-scikit-learn==1.5.1
-scipy==1.13.1
-semantic-version==2.10.0
-six @ file:///tmp/build/80754af9/six_1644875935023/work
-sklearn==0.0
-sniffio==1.3.0
-soupsieve==2.5
-termcolor==2.4.0
-threadpoolctl==3.5.0
-toolz @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_a7gkswah88/croot/toolz_1667464082910/work
-tqdm @ file:///opt/conda/conda-bld/tqdm_1647339053476/work
-typing_extensions==4.9.0
-tzdata==2023.3
-urllib3 @ file:///opt/conda/conda-bld/urllib3_1643638302206/work
-wcwidth==0.2.13
-webencodings==0.5.1
 Werkzeug @ file:///opt/conda/conda-bld/werkzeug_1645628268370/work
 XlsxWriter==3.0.3
-yfinance==0.2.41
-zipp @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_b279673d-f037-44c7-8773-c5a6b6f51037d3wfr9cq/croots/recipe/zipp_1652341773612/work
