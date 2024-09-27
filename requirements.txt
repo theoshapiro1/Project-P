@@ -1,12 +1,10 @@
+click==8.1.7
 document==1.0
 docx==0.2.4
-Flask @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_8am4k38yjk/croots/recipe/flask_1658870771936/work
+Flask==3.0.3
 gunicorn==23.0.0
-itsdangerous @ file:///tmp/build/80754af9/itsdangerous_1621432558163/work
-Jinja2 @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_6adj7x0ejx/croot/jinja2_1666908137966/work
-MarkupSafe @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_d4a9444f-bd4c-4043-b47d-cede33979b0fve7bm42r/croots/recipe/markupsafe_1654597878200/work
-numpy @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_f1fp12zi4u/croot/numpy_and_numpy_base_1667233468135/work
-openpyxl==3.1.2
-pandas==2.1.4
-Werkzeug @ file:///opt/conda/conda-bld/werkzeug_1645628268370/work
+itsdangerous==2.2.0
+Jinja2==3.1.4
+MarkupSafe==2.1.5pandas==2.1.4
+Werkzeug==3.0.4
 XlsxWriter==3.0.3
