@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, send_file
+from flask import Flask, render_template, request, send_file, redirect, url_for
 import pandas as pd
 import os
 from docx import Document
@@ -64,11 +64,12 @@ def index():
 def get_clauses():
     if request.method == 'POST':
         # Handle form submission
-        if 'cost' not in request.form or request.form['cost'] == '':
-            return "Project cost is missing", 400  # Handle missing cost input
+        if 'cost' not in request.form or request.form['cost'] == '' or 'title' not in request.form or request.form['title'] == '':
+            return "Project title or cost is missing", 400  # Handle missing title or cost input
         
         selected_column = request.form['column']
         project_cost = float(request.form['cost'])  # Convert cost to float
+        project_title = request.form['title']  # Get the project title
 
         # Mapping text-based thresholds to numeric values
         cost_mapping = {
@@ -138,7 +139,7 @@ def get_clauses():
         #print("Clause IDs after conversion to float:", clause_ids)
 
         document = Document()
-        document.add_heading('Clauses Report', 0)
+        document.add_heading(f'Clauses Report for {project_title}', 0)
 
         for clause_id in clause_ids:
             # Debugging: Print clause ID being looked up
@@ -160,14 +161,19 @@ def get_clauses():
             document.add_paragraph(text)
 
         # Save the document to a file
-        output_file_path = 'Clauses_Report.docx'
+        output_file_path = f'{project_title}_Clauses_Report.docx'
         document.save(output_file_path)
 
-        # Provide the file for download
-        return send_file(output_file_path, as_attachment=True, download_name='Clauses_Report.docx')
+        # Redirect to the download page and provide the link to the document with the project title
+        return render_template('download.html', file_link=url_for('download_file', filename=output_file_path), project_title=project_title)
 
     # If GET request, just render the form
-    return render_template('index.html', procurement_types=df_sort1.columns[1:].tolist())
+    #return render_template('index.html', procurement_types=df_sort1.columns[1:].tolist())
+
+@app.route('/download/<filename>')
+def download_file(filename):
+    return send_file(filename, as_attachment=True)
+    
 
 if __name__ == '__main__':
     app.run(debug=True)

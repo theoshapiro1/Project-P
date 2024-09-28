@@ -10,6 +10,10 @@
 
     <!-- Form where the user can select a column and type in their project cost -->
     <form action="/get_clauses" method="POST">
+        
+        <label for="title">Project Title:</label>
+        <input type="text" id="title" name="title" required><br><br>
+
         <label for="column">Select a Procurement Type (Column):</label>
         <select name="column" id="column">
             {% for procurement_type in procurement_types %}
