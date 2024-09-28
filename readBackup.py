@@ -18,4 +18,4 @@ for index, row in df_backup.iterrows():
     clauses_dict[clause_id] = {'Title': title, 'Text': text}
 
 # Print the resulting dictionary
-print(clauses_dict)
+#print(clauses_dict)
