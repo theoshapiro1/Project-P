@@ -85,7 +85,12 @@ def login():
 
             return redirect(url_for('get_clauses'))
         except Exception as e:
-            return f"Login failed: {e}"
+            # Log the error for detailed inspection
+            print(f"Error: {str(e)}")
+            if hasattr(e, 'response') and hasattr(e.response, 'json'):
+                print("Detailed response from PocketBase:", e.response.json())
+            return f"Login failed: {str(e)}"
+
 
     return render_template('login.html')
 
@@ -263,7 +268,7 @@ def get_clauses():
                 }
 
                 # Manually send the POST request with the form data and file
-                response = requests.post(f"http://localhost:8090/api/collections/projects/records", data=form_data, files=files)
+                response = requests.post(f"http://157.245.244.136:8090/api/collections/projects/records", data=form_data, files=files)
 
                 if response.status_code == 200:
                     print("File uploaded successfully!")
