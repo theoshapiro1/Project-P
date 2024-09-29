@@ -16,7 +16,7 @@ app.config['PROPAGATE_EXCEPTIONS'] = True
 
 
 # Initialize PocketBase client
-pb = PocketBase('http://localhost:8090')  # Change this to your PocketBase URL
+pb = PocketBase('http://157.245.244.136:8090')  # Change this to your PocketBase URL
 
 # Load the Excel workbook
 file_path = 'Clause Matrix.xlsx'  # Replace this with the correct path to your file
