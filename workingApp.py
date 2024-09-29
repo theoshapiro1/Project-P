@@ -3,17 +3,12 @@ import pandas as pd
 import os
 from docx import Document
 import requests
-import json
 from readBackup import clauses_dict
 from pocketbase import PocketBase
 
 app = Flask(__name__)
 
 app.secret_key = 'your_secret_key'  # Necessary for session management
-
-app.config['DEBUG'] = True
-app.config['PROPAGATE_EXCEPTIONS'] = True
-
 
 # Initialize PocketBase client
 pb = PocketBase('http://localhost:8090')  # Change this to your PocketBase URL
@@ -91,8 +86,6 @@ def login():
 
 # Route to the sign-up page
 # Route to the sign-up page
-import json  # Required to print data as JSON
-
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
     if request.method == 'POST':
@@ -100,41 +93,21 @@ def signup():
         password = request.form['password']
         username = request.form['username']
 
-        # Prepare the data to be sent
-        user_data = {
-            'email': email,
-            'password': password,
-            'passwordConfirm': password,  # Ensure you're sending this field
-            'username': username
-        }
-
-        # Log the data being sent to PocketBase
-        print("Sending request to PocketBase with user data:", json.dumps(user_data, indent=4))
-
         try:
             # Attempt to create a new user in PocketBase
-            new_user = pb.collection('users').create(user_data)
+            new_user = pb.collection('users').create({
+                'email': email,
+                'password': password,
+                'passwordConfirm': password,  # Ensure you're sending this field
+                'username': username
+            })
 
-            # Redirect to login upon successful signup
             return redirect(url_for('login'))
-        
         except Exception as e:
-            # Catch and log any exception that occurs
-            print(f"Exception occurred: {e}")
-            # Log detailed response if available
-            response_error = e.response.json() if hasattr(e, 'response') else 'No response'
-            print(f"Response error: {response_error}")
-            # Return the error message to the user for more clarity
-            return f"Sign-up failed: {str(e)}, Response: {response_error}"
-    
-    # Render the signup form if it's a GET request
+            return f"Sign-up failed: {e}"
+
     return render_template('signup.html')
 
-UPLOAD_FOLDER = os.path.join(os.getcwd(), 'uploads')  # Save files in the 'uploads' folder
-if not os.path.exists(UPLOAD_FOLDER):
-    os.makedirs(UPLOAD_FOLDER)  # Create the folder if it doesn't exist
-
-project_title = ""
 
 @app.route('/get_clauses', methods=['GET', 'POST'])
 def get_clauses():
@@ -241,10 +214,9 @@ def get_clauses():
 
             document.add_heading(title, level=1)
             document.add_paragraph(text)
-            
-        # Save the document to the 'uploads' directory
-        file_name = f'{project_title}_Clauses_Report.docx'
-        output_file_path = os.path.join(UPLOAD_FOLDER, file_name)
+
+        # Save the document to a file
+        output_file_path = f'{project_title}_Clauses_Report.docx'
         document.save(output_file_path)
 
         print(f"Uploading file: {output_file_path}")  # Print the file being uploaded
@@ -295,8 +267,7 @@ def get_clauses():
 
                     if file_name:
                         # Generate the correct file URL
-                        #file_url = pb.get_file_url(project, file_name, {})  # Provide an empty dictionary for query_params
-                        file_url = pb.get_file_url(project, project.file[0], {})
+                        file_url = pb.get_file_url(project, file_name, {})  # Provide an empty dictionary for query_params
                         print(f"Generated file URL: {file_url}")  # Debug: Print the file URL
                         project_links.append({'title': project.title, 'file_url': file_url})
                     else:
@@ -318,24 +289,9 @@ def get_clauses():
     # If GET request, just render the form
     #return render_template('index.html', procurement_types=df_sort1.columns[1:].tolist())
 
-
-@app.route('/download/<filename>')
-def download_file(filename):
-    return f"Hit the download route! Requested file: {filename}"
-    # Print the filename and the file path for debugging
-    file_path = os.path.join(UPLOAD_FOLDER, filename)
-    print(f"Requested file: {filename}")
-    print(f"Full file path: {file_path}")
-
-    # Check if the file exists
-    if os.path.exists(file_path):
-        print(f"Serving file: {file_path}")
-        # Test with a static download name to see if it works
-        return send_file(file_path, as_attachment=True, download_name="test.docx")
-    else:
-        print("File not found")
-        return "File not found", 404
-
+@app.route('/download/<filename>/<title>')
+def download_file(filename, title):
+    return send_file(filename, as_attachment=True, download_name=f"{title}.docx")
     
 
 if __name__ == '__main__':

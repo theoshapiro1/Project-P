@@ -11,13 +11,9 @@
     <h2>New Project: {{ new_project }}</h2>
     <ul>
         {% for project in project_links %}
-            <li>
-                <a href="{{ project.file_url }}" download>{{ project.title }}</a>
-            </li>
+            <li><a href="{{ project.file_url }}" download>{{ project.title }}</a></li>
         {% endfor %}
     </ul>
-    
-    
 
     <p>Click on the links above to download your projects.</p>
 </body>
